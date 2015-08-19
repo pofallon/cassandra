@@ -241,6 +241,8 @@ my_commands_ending_with_newline = (
     'tracing',
     'expand',
     'paging',
+    'clear',
+    'cls',
     'exit',
     'quit'
 )
@@ -275,7 +277,11 @@ cqlsh_extra_syntax_rules = r'''
                    | <expandCommand>
                    | <exitCommand>
                    | <pagingCommand>
+                   | <clearCommand>
                    ;
+
+<clearCommand> ::= "CLEAR" | "CLS"
+                 ;
 
 <describeCommand> ::= ( "DESCRIBE" | "DESC" )
                                   ( "FUNCTIONS" ksname=<keyspaceName>?
@@ -2169,6 +2175,16 @@ class Shell(cmd.Cmd):
         if self.owns_connection:
             self.conn.shutdown()
     do_quit = do_exit
+
+    def do_clear(self, parsed):
+        """
+        CLEAR/CLS [cqlsh only]
+
+        Clears the console.
+        """
+        import subprocess
+        subprocess.call(['clear','cls'][myplatform == 'Windows'], shell=True)
+    do_cls = do_clear
 
     def do_debug(self, parsed):
         import pdb
