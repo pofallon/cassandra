@@ -3,6 +3,7 @@
 
 
 3.0.0-beta1
+ * Rewrite hinted handoff (CASSANDRA-6230)
  * Fix query on static compact tables (CASSANDRA-10093)
  * Fix race during construction of commit log (CASSANDRA-10049)
  * Add option to only purge repaired tombstones (CASSANDRA-6434)
@@ -20,6 +21,7 @@
  * Replace usage of Adler32 with CRC32 (CASSANDRA-8684)
  * Fix migration to new format from 2.1 SSTable (CASSANDRA-10006)
  * SequentialWriter should extend BufferedDataOutputStreamPlus (CASSANDRA-9500)
+ * Use the same repairedAt timestamp within incremental repair session (CASSANDRA-9111)
 Merged from 2.2:
  * Fix histogram overflow exception (CASSANDRA-9973)
  * Route gossip messages over dedicated socket (CASSANDRA-9237)
