@@ -241,10 +241,10 @@ my_commands_ending_with_newline = (
     'tracing',
     'expand',
     'paging',
-    'clear',
-    'cls',
     'exit',
-    'quit'
+    'quit',
+    'clear',
+    'cls'
 )
 
 
@@ -279,9 +279,6 @@ cqlsh_extra_syntax_rules = r'''
                    | <pagingCommand>
                    | <clearCommand>
                    ;
-
-<clearCommand> ::= "CLEAR" | "CLS"
-                 ;
 
 <describeCommand> ::= ( "DESCRIBE" | "DESC" )
                                   ( "FUNCTIONS" ksname=<keyspaceName>?
@@ -367,6 +364,9 @@ cqlsh_extra_syntax_rules = r'''
 
 <exitCommand> ::= "exit" | "quit"
                 ;
+
+<clearCommand> ::= "CLEAR" | "CLS"
+                 ;
 
 <qmark> ::= "?" ;
 '''
